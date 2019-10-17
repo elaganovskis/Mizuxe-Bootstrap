@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="css/style.css" />
     <title>Mizuxe</title>
   </head>
-  <body>
+  <body id="home" data-spy="scroll" data-target="#main-nav">
     <!-- Start Here -->
 
-    <nav class="navbar navbar-expand-md navbar-light fixed-top py-2">
+    <nav id="main-nav" class="navbar navbar-expand-md navbar-light fixed-top py-2">
       <div class="container">
         <a href="#home" class="navbar-brand">
           <img src="./img/mlogo.png" width="50" height="50" alt="Mizuxe Logo" />
@@ -360,6 +360,59 @@
       </div>
     </section>
 
+    <!-- CONTACT -->
+
+    <div id="contact" class="bg-light py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-9">
+            <h3>Get in Touch</h3>
+            <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quam repellat eius ducimus in ut molestiae!</p>
+            <form>
+              <div class="input-group input-group-lg mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Name">
+              </div>
+              <div class="input-group input-group-lg mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Email">
+              </div>
+              <div class="input-group input-group-lg mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fas fa-pencil-alt"></i>
+                  </span>
+                </div>
+                <textarea class="form-control" id="" cols="30" rows="5" placeholder="Message"></textarea>
+              </div>
+              <input type="submit" value="Submit" class="btn btn-primary btn-block btn-lg">
+            </form>
+          </div>
+          <div class="col-lg-3 align-self-center">
+            <img src="./img/mlogo.png" alt="Logo" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="cooter" class="bg-primary py-5 text-white">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-6 ml-auto">
+            <p class="lead">Copyright <span id="year"></span></div></p>
+        </div>
+      </div>
+    </footer>
+
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -379,6 +432,25 @@
       //Get the current year of copyright
       $('#year').text(new Date().getFullYear());
       //<span id="year"></span>
+
+      //Init ScrollSpy
+      $('body').scrollspy({target: '#main-nav'});
+
+      //Smooth Scrolling
+      $('#main-nav a').on('click', function(event){
+        if(this.hash !== '') {
+          event.preventDefault();
+
+          const hash = this.hash;
+
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function(){
+            window.location.hash = hash;
+          });
+        }
+      });
+
     </script>
   </body>
 </html>

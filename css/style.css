@@ -43,3 +43,11 @@ body {
 
   .mb-resp {
     margin-bottom: 1rem; } }
+@media (max-width: 576px) {
+  #showcase {
+    min-height: 500px; }
+    #showcase h1 {
+      font-size: 3rem; }
+
+  .mb-resp {
+    margin-bottom: 1rem; } }
